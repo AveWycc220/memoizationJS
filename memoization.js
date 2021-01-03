@@ -21,14 +21,12 @@ const memoize = (fn) => {
   }
 }
 
-let time = performance.now()
 const factorialMemoFunction = memoize(factorial)
+console.time('Memoized double factorial(10000)')
 factorialMemoFunction(10000)
 factorialMemoFunction(10000)
-time = performance.now() - time
-console.log(`Memoized double factorial(10000) ${time}`)
-time = performance.now()
+console.timeEnd('Memoized double factorial(10000)')
+console.time('Not memoized double factorial(10000)')
 factorial(10000)
 factorial(10000)
-time = performance.now() - time
-console.log(`Not memoized double factorial(10000) ${time}`)
+console.timeEnd('Not memoized double factorial(10000)')
